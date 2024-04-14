@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  crawler-api:
+    build: 
+      context: .
+    container_name: crawler_api
+    image: crawler_v1
+    restart: always
+    entrypoint: bash /usr/src/news/run.sh
+    working_dir: /usr/src/news
+    ports:
+      - "9123:9123"
+    env_file:
+      - src/news_extraction/.env

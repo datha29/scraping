@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  full_article_service:
+    build:
+      context: .
+    env_file:
+        - src/news_extraction/.env
+    restart: always
+    container_name: full_article_crawler
+    entrypoint: ["/bin/sh", "-c" , "python /usr/src/news/src/news_extraction/main.py && python /usr/src/news/src/news_extraction/main.py && python /usr/src/news/src/news_extraction/main.py"]
+    working_dir: /usr/src/news
+    volumes:
+      - /data/data/model:/usr/src/news/src/news_extraction/data/model
+      - ./logs:/usr/src/news/logs
+# usr/src/news/src/NewsWebPageExtraction/main.py,python /usr/src/news/src/NewsWebPageExtraction/main.py
+#ENTRYPOINT ["/bin/sh", "-c" , "<command A> && <command B> && <command C>"]
+                                    

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crawler-deploy
+  labels:
+    app: crawler
+spec:
+  selector:
+    matchLabels:
+      app: crawler
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: crawler
+    spec:
+      containers:
+      - name: crawler
+        image: asia-south1-docker.pkg.dev/jiox-328108/pie-ds-stage/prod/crawler_v1:latest
+        imagePullPolicy: Always
+        command: ["bash"]
+        args: ["/usr/src/news/run.sh"]
+        envFrom:
+          - configMapRef:
+              name: crawler-prod-env
+        ports:
+        - containerPort: 9123
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "1"
+          limits:
+            memory: "2Gi"
+            cpu: "2"

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: crawler-prod-env
+  labels:
+    app: crawler
+data:
+  MONGO_CONN_STIRNG: mongodb://data-science-prod:sDekEd32Htn85gDF6VQ@jionews-ds-mongo-master.pie.news:27017/?tls=true&directConnection=true
+  MONGO_DATABASE: news-dev-web-crawling
+  MONGO_COLLECTION: full_article_dev
+  JIO_MONGO_CONN: mongodb://jiorecomongo:5p1gkZgBAfHQCXC71deAggkN2yiUd5u18KxGYtvbZ6fQereAfe8kT6FJjCTD1C3FHjv1sCvwTpcCdHPzcRQWIA%3D%3D@jiorecomongo.mongo.cosmos.azure.com:10255/?authSource=admin&replicaSet=globaldb&readPreference=primary&appname=%40jiorecomongo%40&retryWrites=false&ssl=true
+  GCP_KEY: GCP
+  MS_TRANSLATOR_SUBSCRIPTION_KEY: 11edf81f37f64d9599b29644c136bc57
+  QUEUEIN: dev
+  QUEUEOUT: dev

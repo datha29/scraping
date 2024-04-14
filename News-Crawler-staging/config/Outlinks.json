@@ -1,0 +1,4 @@
+{
+	"The Indian Express": "[a-zA-Z0-9\\s/>. _-]*(div_ev-meter-content->p->a$)[a-zA-Z0-9/. >_-]*",
+	"ANI": "[a-zA-Z0-9\\s/>. _-]*(div_ev-meter-content->p->a$)[a-zA-Z0-9/. >_-]*"
+}
